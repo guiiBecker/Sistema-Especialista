@@ -4,7 +4,6 @@ Sistema Especialista de Diagnóstico de TI
 Sistema que analisa descrições de problemas de computador e fornece diagnósticos possíveis.
 """
 
-# Base de conhecimento com problemas e suas características
 BASE_CONHECIMENTO = {
     "problema_lentidao": {
         "palavras_chave": ["lento", "devagar", "performance", "lentidão", "trava", "congela",
@@ -167,7 +166,7 @@ def modo_demonstracao():
 
 def main():
     """Função principal do programa"""
-    # Verificar se estamos em ambiente interativo
+
     try:
         import sys
         if not sys.stdin.isatty():
@@ -178,7 +177,6 @@ def main():
         return
 
     while True:
-        # Obter descrição do usuário
         descricao = obter_descricao_usuario()
 
         if descricao is None:
@@ -189,13 +187,11 @@ def main():
             modo_demonstracao()
             break
 
-        # Analisar descrição e obter diagnósticos
         resultados = analisar_descricao(descricao)
 
-        # Mostrar resultados
+    
         mostrar_diagnosticos(resultados, descricao)
 
-        # se houver mais dúvidas ou mais perguntas
         try:
             continuar = input("\nDeseja diagnosticar outro problema? (s/n): ").strip().lower()
             if continuar not in ['s', 'sim', 'y', 'yes']:
