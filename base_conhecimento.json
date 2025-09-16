@@ -6,7 +6,10 @@
       "performance",
       "lentidão",
       "trava",
+      "travando",
+      "travou",
       "congela",
+      "congelando",
       "demora",
       "carrega",
       "resposta",
@@ -35,6 +38,9 @@
   "problema_hardware": {
     "palavras_chave": [
       "trava",
+      "travou",
+      "congelou",
+      "travamento",
       "reinicia",
       "tela azul",
       "erro",
@@ -203,6 +209,9 @@
       "apps",
       "abrir",
       "erro ao abrir",
+      "travou",
+      "travando",
+      "congelou",
       "não abre",
       "nao abre",
       "não responde",
@@ -546,5 +555,20 @@
     "diagnostico": "Throttling Térmico",
     "solucao": "Melhorar refrigeração (limpeza, pasta, airflow), ajustar plano de energia, considerar undervolt e monitorar temperaturas",
     "severidade": "Médio"
+  },
+  "problema_travamento_sistema": {
+    "palavras_chave": [
+      "travou",
+      "travando",
+      "congelou",
+      "congelando",
+      "não responde",
+      "travamento do sistema",
+      "hard lock",
+      "parou de responder"
+    ],
+    "diagnostico": "Travamento do Sistema",
+    "solucao": "Verificar uso de CPU/RAM, eventos do sistema, drivers, temperatura e integridade do disco; aplicar atualizações",
+    "severidade": "Alto"
   }
 }
