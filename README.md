@@ -6,6 +6,8 @@ Este é um sistema especialista simples e eficaz implementado em Python para dia
 
 O sistema solicita uma descrição textual do problema do usuário, analisa o texto procurando por palavras-chave relacionadas a sintomas comuns de TI, e fornece até 3 diagnósticos mais prováveis ordenados por nível de confiança.
 
+Os dados usados no diagnóstico ficam no arquivo `base_conhecimento.json` (no mesmo diretório do `main.py`). Você pode editar esse arquivo para adicionar/alterar problemas, palavras‑chave, soluções e severidades sem precisar mexer no código.
+
 ## Recursos
 
 - **Análise Textual Inteligente**: Sistema analisa descrições em linguagem natural
@@ -25,6 +27,22 @@ O sistema solicita uma descrição textual do problema do usuário, analisa o te
 3. Execute: `python3 main.py`
 4. Descreva o problema do seu computador em linguagem natural
 5. O sistema analisará sua descrição e fornecerá diagnósticos
+
+Se você editar o `base_conhecimento.json`, as mudanças são carregadas automaticamente na próxima execução.
+
+### Como editar a base de conhecimento
+
+1. Abra o arquivo `base_conhecimento.json` neste diretório.
+2. Cada item possui a estrutura:
+    ```json
+    "chave_do_problema": {
+       "palavras_chave": ["...", "..."],
+       "diagnostico": "Descrição do diagnóstico",
+       "solucao": "Sugestão de solução",
+       "severidade": "Alto|Médio|Baixo"
+    }
+    ```
+3. Salve o arquivo e rode `python3 main.py` novamente.
 
 ## Exemplo de Uso
 
@@ -90,5 +108,3 @@ Este sistema demonstra conceitos fundamentais de IA:
 - **Algoritmos de correspondência e pontuação**
 - **Interface conversacional simples**
 - **Lógica de diagnóstico automatizado**
-
-Perfeito para apresentações em sala de aula sobre conceitos básicos de IA e sistemas especialistas.

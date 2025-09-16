@@ -4,118 +4,59 @@ Sistema Especialista de Diagnóstico de TI
 Sistema que analisa descrições de problemas de computador e fornece diagnósticos possíveis.
 """
 
-BASE_CONHECIMENTO = {
-    "problema_lentidao": {
-        "palavras_chave": ["lento", "devagar", "performance", "lentidão", "trava", "congela",
-                          "demora", "carrega", "resposta", "atraso", "desempenho", "velocidade"],
-        "diagnostico": "Problema de Performance",
-        "solucao": "Verificar uso de CPU/memória, fechar programas desnecessários, verificar disco",
-        "severidade": "Médio"
-    },
-    "problema_malware": {
-        "palavras_chave": ["vírus", "malware", "popup", "anúncio", "suspeito", "estranho", "infectado"],
-        "diagnostico": "Possível Infecção por Malware",
-        "solucao": "Executar antivírus completo, verificar downloads recentes, limpar cache",
-        "severidade": "Alto"
-    },
-    "problema_hardware": {
-        "palavras_chave": ["trava", "reinicia", "tela azul", "erro", "crash", "quebrado", "defeito"],
-        "diagnostico": "Problema de Hardware",
-        "solucao": "Verificar RAM, disco rígido, temperatura, conexões físicas",
-        "severidade": "Alto"
-    },
-    "problema_rede": {
-        "palavras_chave": ["internet", "rede", "conexão", "wifi", "conectar", "online",
-                          "navegador", "site", "carregar", "página", "rede lenta"],
-        "diagnostico": "Problema de Conectividade",
-        "solucao": "Reiniciar modem, verificar cabos, testar com outro dispositivo",
-        "severidade": "Baixo"
-    },
-    "problema_armazenamento": {
-        "palavras_chave": ["espaço", "disco", "cheio", "armazenamento", "memória", "HD", "ssd"],
-        "diagnostico": "Problema de Armazenamento",
-        "solucao": "Liberar espaço, excluir arquivos temporários, verificar disco",
-        "severidade": "Médio"
-    },
-    "problema_sobreaquecimento": {
-        "palavras_chave": ["quente", "ventoinha", "temperatura", "aquecer", "superaquecer", "cooler"],
-        "diagnostico": "Problema de Sobreaquecimento",
-        "solucao": "Limpar ventoinhas, verificar ventilação, usar base elevada",
-        "severidade": "Médio"
-    },
-    "problema_perifericos": {
-        "palavras_chave": ["mouse", "teclado", "impressora", "usb", "periférico", "não funciona"],
-        "diagnostico": "Problema com Periféricos",
-        "solucao": "Verificar conexões, atualizar drivers, testar em outra porta",
-        "severidade": "Baixo"
-    },
-    "problema_sistema": {
-        "palavras_chave": ["iniciar", "boot", "ligar", "sistema", "windows", "instalar", "desligar sozinho"],
-        "diagnostico": "Problema do Sistema Operacional",
-        "solucao": "Executar inicialização limpa, verificar disco, restaurar sistema",
-        "severidade": "Alto"
-    },
-    "problema_driver": {
-        "palavras_chave": ["driver", "instalar", "placa de vídeo", "som", "incompatível", "atualização"],
-        "diagnostico": "Problema de Drivers",
-        "solucao": "Atualizar drivers, reinstalar o dispositivo, verificar compatibilidade",
-        "severidade": "Médio"
-    },
-    "problema_bateria": {
-        "palavras_chave": ["bateria", "carregar", "energia", "descarrega rápido", "não carrega"],
-        "diagnostico": "Problema de Bateria",
-        "solucao": "Verificar carregador, substituir bateria, ajustar configurações de energia",
-        "severidade": "Médio"
-    },
-    "problema_email": {
-        "palavras_chave": ["email", "outlook", "gmail", "mensagem", "enviar", "receber", "caixa postal"],
-        "diagnostico": "Problema com E-mail",
-        "solucao": "Verificar configurações do servidor, autenticação e espaço da caixa de entrada",
-        "severidade": "Baixo"
-    },
-    "problema_audio": {
-        "palavras_chave": ["som", "áudio", "alto-falante", "fone", "microfone", "não ouço", "mudo"],
-        "diagnostico": "Problema de Áudio",
-        "solucao": "Checar drivers de som, conexões físicas, configurações de volume",
-        "severidade": "Baixo"
-    },
-    "problema_video": {
-        "palavras_chave": ["vídeo", "tela preta", "monitor", "resolução", "placa de vídeo"],
-        "diagnostico": "Problema de Vídeo",
-        "solucao": "Verificar cabos, drivers de vídeo, configurações de tela",
-        "severidade": "Médio"
-    },
-    "problema_rede_local": {
-        "palavras_chave": ["impressora de rede", "compartilhar", "acesso negado", "mapear unidade"],
-        "diagnostico": "Problema em Rede Local",
-        "solucao": "Verificar permissões, firewall, IPs e compartilhamentos",
-        "severidade": "Médio"
-    },
-    "problema_software": {
-        "palavras_chave": ["programa", "aplicativo", "erro ao abrir", "não responde", "fechar sozinho"],
-        "diagnostico": "Problema de Software",
-        "solucao": "Reinstalar o software, aplicar atualizações, verificar compatibilidade",
-        "severidade": "Médio"
-    },
-    "problema_internet_lenta": {
-        "palavras_chave": ["internet lenta", "download lento", "upload baixo", "ping alto"],
-        "diagnostico": "Conexão Lenta",
-        "solucao": "Testar velocidade, trocar canal do Wi-Fi, contatar o provedor",
-        "severidade": "Baixo"
-    }
-}
+from __future__ import annotations
 
-def analisar_descricao(descricao):
+import json
+import os
+from typing import Any, Dict, List
+
+
+def _caminho_base_json() -> str:
+    """Resolve o caminho do arquivo base_conhecimento.json relativo a este script."""
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_dir, "base_conhecimento.json")
+
+
+def carregar_base_conhecimento(caminho: str | None = None) -> Dict[str, Dict[str, Any]]:
+    """Carrega a base de conhecimento a partir de um arquivo JSON.
+
+    Estrutura esperada:
+    {
+      "chave": {
+        "palavras_chave": ["..."],
+        "diagnostico": "...",
+        "solucao": "...",
+        "severidade": "Alto|Médio|Baixo"
+      },
+      ...
+    }
+    """
+    caminho = caminho or _caminho_base_json()
+    try:
+        with open(caminho, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            if not isinstance(data, dict):
+                raise ValueError("JSON da base de conhecimento deve ser um objeto no topo")
+            return data  # type: ignore[return-value]
+    except FileNotFoundError:
+        raise SystemExit(f"Arquivo de base de conhecimento não encontrado: {caminho}")
+    except json.JSONDecodeError as e:
+        raise SystemExit(f"Erro ao ler JSON da base de conhecimento: {e}")
+
+BASE_CONHECIMENTO = carregar_base_conhecimento()
+
+
+def analisar_descricao(descricao: str) -> List[Dict[str, Any]]:
     """
     Analisa a descrição do problema e encontra possíveis diagnósticos
     Retorna lista de diagnósticos ordenados por relevância
     """
     descricao_minuscula = descricao.lower()
-    resultados = []
+    resultados: List[Dict[str, Any]] = []
 
     for problema, dados in BASE_CONHECIMENTO.items():
         pontuacao = 0
-        palavras_encontradas = []
+        palavras_encontradas: List[str] = []
 
         # Verificar cada palavra-chave
         for palavra in dados["palavras_chave"]:
