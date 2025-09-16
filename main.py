@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""
-Sistema Especialista de Diagnóstico de TI
-Sistema que analisa descrições de problemas de computador e fornece diagnósticos possíveis.
-"""
-
 from __future__ import annotations
 
 import json
@@ -12,25 +7,12 @@ from typing import Any, Dict, List
 
 
 def _caminho_base_json() -> str:
-    """Resolve o caminho do arquivo base_conhecimento.json relativo a este script."""
     base_dir = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(base_dir, "base_conhecimento.json")
 
 
 def carregar_base_conhecimento(caminho: str | None = None) -> Dict[str, Dict[str, Any]]:
-    """Carrega a base de conhecimento a partir de um arquivo JSON.
 
-    Estrutura esperada:
-    {
-      "chave": {
-        "palavras_chave": ["..."],
-        "diagnostico": "...",
-        "solucao": "...",
-        "severidade": "Alto|Médio|Baixo"
-      },
-      ...
-    }
-    """
     caminho = caminho or _caminho_base_json()
     try:
         with open(caminho, "r", encoding="utf-8") as f:
@@ -47,10 +29,7 @@ BASE_CONHECIMENTO = carregar_base_conhecimento()
 
 
 def analisar_descricao(descricao: str) -> List[Dict[str, Any]]:
-    """
-    Analisa a descrição do problema e encontra possíveis diagnósticos
-    Retorna lista de diagnósticos ordenados por relevância
-    """
+
     descricao_minuscula = descricao.lower()
     resultados: List[Dict[str, Any]] = []
 
@@ -104,10 +83,10 @@ def obter_descricao_usuario():
             print("\nPrograma interrompido pelo usuário.")
             return None
         except EOFError:
-            return "MODO_DEMONSTRACAO"
+            # Sem entrada disponível (não-interativo)
+            return None
 
 def mostrar_diagnosticos(resultados, descricao):
-    """Mostra os diagnósticos encontrados"""
     print(f"\nAnalisando: \"{descricao}\"\n")
 
     if not resultados:
@@ -128,54 +107,18 @@ def mostrar_diagnosticos(resultados, descricao):
             print(f"   Palavras identificadas: {', '.join(resultado['palavras'])}")
 
     print("\n" + "=" * 60)
-    print("NOTA: Este é um diagnóstico preliminar baseado em IA.")
-    print("Consulte um técnico especializado para reparo adequado.")
 
-def modo_demonstracao():
-    """Mostra exemplos de funcionamento do sistema"""
-    print("=== MODO DEMONSTRAÇÃO ===")
-    print("Como não há entrada interativa disponível, aqui estão alguns exemplos:\n")
-
-    exemplos = [
-        "Meu computador está muito lento e demora para abrir os programas",
-        "Aparecem muitos pop-ups e anúncios suspeitos na tela",
-        "O computador travou e mostrou tela azul de erro",
-        "Não consigo conectar à internet mas outros dispositivos funcionam",
-        "O disco rígido está quase cheio e os arquivos não salvam",
-        "O notebook fica muito quente e a ventoinha não para",
-        "O mouse e o teclado não estão funcionando",
-        "O Windows não inicia corretamente e reinicia sozinho",
-        "O som parou de funcionar após atualizar a placa de vídeo",
-        "A bateria do notebook descarrega muito rápido e não carrega completamente",
-        "Não consigo enviar nem receber mensagens no Outlook",
-        "O microfone não está captando minha voz",
-        "O monitor está com a tela preta, mas o computador está ligado",
-        "Não consigo acessar a impressora compartilhada na rede",
-        "O aplicativo trava e fecha sozinho toda vez que abro",
-        "Minha conexão de internet está muito lenta, downloads demorando horas"
-    ]
-
-    for i, exemplo in enumerate(exemplos, 1):
-        print(f"EXEMPLO {i}:")
-        resultados = analisar_descricao(exemplo)
-        mostrar_diagnosticos(resultados, exemplo)
-        print("-" * 60)
-
-    print("\nPara usar o sistema completo:")
-    print("python3 main.py")
-    print("E forneça suas próprias descrições!")
 
 def main():
     """Função principal do programa"""
-
+    # Se não houver entrada interativa, encerra com mensagem curta
     try:
         import sys
         if not sys.stdin.isatty():
-            modo_demonstracao()
+            print("Entrada interativa não disponível. Execute em um terminal para usar o sistema.")
             return
-    except:
-        modo_demonstracao()
-        return
+    except Exception:
+        pass
 
     while True:
         descricao = obter_descricao_usuario()
@@ -184,9 +127,8 @@ def main():
             print("Obrigado por usar o Sistema Especialista de Diagnóstico de TI!")
             break
 
-        if descricao == "MODO_DEMONSTRACAO":
-            modo_demonstracao()
-            break
+        # Se não houver descrição (ex.: EOF), encerra
+        
 
         resultados = analisar_descricao(descricao)
 

@@ -216,5 +216,327 @@
     "diagnostico": "Conexão Lenta",
     "solucao": "Testar velocidade, trocar canal do Wi-Fi, contatar o provedor",
     "severidade": "Baixo"
+  },
+  "problema_bluetooth": {
+    "palavras_chave": [
+      "bluetooth",
+      "parear",
+      "pareamento",
+      "dispositivo não aparece",
+      "conectar fone",
+      "conexão bluetooth"
+    ],
+    "diagnostico": "Problema de Bluetooth",
+    "solucao": "Reiniciar serviço Bluetooth, remover/parear novamente o dispositivo, atualizar driver/adaptador",
+    "severidade": "Baixo"
+  },
+  "problema_camera": {
+    "palavras_chave": [
+      "câmera",
+      "camera",
+      "webcam",
+      "sem vídeo",
+      "não funciona câmera",
+      "permissão câmera"
+    ],
+    "diagnostico": "Problema de Câmera/Webcam",
+    "solucao": "Verificar permissões do app, selecionar dispositivo correto, atualizar drivers, checar privacidade do sistema",
+    "severidade": "Baixo"
+  },
+  "problema_dns": {
+    "palavras_chave": [
+      "dns",
+      "não resolve nomes",
+      "site não abre",
+      "apenas por ip",
+      "servidor dns",
+      "erro dns"
+    ],
+    "diagnostico": "Problema de DNS",
+    "solucao": "Alterar servidores DNS (8.8.8.8/1.1.1.1), limpar cache DNS, reiniciar roteador",
+    "severidade": "Baixo"
+  },
+  "problema_vpn": {
+    "palavras_chave": [
+      "vpn",
+      "conexão vpn",
+      "desconecta vpn",
+      "sem acesso remoto",
+      "tunel",
+      "openvpn",
+      "forticlient"
+    ],
+    "diagnostico": "Problema de VPN",
+    "solucao": "Verificar credenciais, horário do sistema, políticas, reinstalar cliente e checar firewall",
+    "severidade": "Médio"
+  },
+  "problema_atualizacao_sistema": {
+    "palavras_chave": [
+      "atualização",
+      "update",
+      "windows update",
+      "update falha",
+      "erro update",
+      "não atualiza"
+    ],
+    "diagnostico": "Problema de Atualizações do Sistema",
+    "solucao": "Executar solucionador do Windows Update, limpar cache de atualização, reiniciar serviços e tentar novamente",
+    "severidade": "Médio"
+  },
+  "problema_backup": {
+    "palavras_chave": [
+      "backup",
+      "cópia de segurança",
+      "restaurar",
+      "não faz backup",
+      "falha no backup"
+    ],
+    "diagnostico": "Problema de Backup",
+    "solucao": "Verificar espaço disponível, permissões de pastas, destino acessível e logs de erro",
+    "severidade": "Médio"
+  },
+  "problema_navegador": {
+    "palavras_chave": [
+      "navegador",
+      "chrome",
+      "firefox",
+      "edge",
+      "cache",
+      "extensões",
+      "navegador lento"
+    ],
+    "diagnostico": "Problema de Navegador",
+    "solucao": "Limpar cache e cookies, desativar extensões problemáticas, criar novo perfil ou reinstalar",
+    "severidade": "Baixo"
+  },
+  "problema_certificado_ssl": {
+    "palavras_chave": [
+      "certificado",
+      "ssl",
+      "https",
+      "conexão não é segura",
+      "certificado inválido"
+    ],
+    "diagnostico": "Problema de Certificado/SSL",
+    "solucao": "Ajustar data/hora do sistema, reinstalar certificados raiz, verificar proxy/inspeção TLS",
+    "severidade": "Baixo"
+  },
+  "problema_particao": {
+    "palavras_chave": [
+      "partição",
+      "sistema de arquivos",
+      "corrompido",
+      "chkdsk",
+      "fsck",
+      "não monta"
+    ],
+    "diagnostico": "Sistema de Arquivos/Partição Corrompida",
+    "solucao": "Executar verificação de disco (chkdsk/fsck), checar SMART, realizar backup imediato",
+    "severidade": "Alto"
+  },
+  "problema_memoria_ram": {
+    "palavras_chave": [
+      "memória ram",
+      "sem memória",
+      "out of memory",
+      "travando ao abrir",
+      "uso de memória"
+    ],
+    "diagnostico": "Memória RAM Insuficiente ou com Falhas",
+    "solucao": "Fechar apps pesados, aumentar memória virtual, testar RAM (MemTest) e considerar upgrade",
+    "severidade": "Médio"
+  },
+  "problema_gpu_temperatura": {
+    "palavras_chave": [
+      "gpu",
+      "temperatura alta",
+      "throttling",
+      "queda de fps",
+      "ventoinha placa"
+    ],
+    "diagnostico": "Temperatura Alta da GPU",
+    "solucao": "Limpar poeira, ajustar curva de fan, atualizar drivers, melhorar ventilação",
+    "severidade": "Médio"
+  },
+  "problema_touchpad": {
+    "palavras_chave": [
+      "touchpad",
+      "trackpad",
+      "cursor pula",
+      "não clica",
+      "multitoque"
+    ],
+    "diagnostico": "Problema no Touchpad",
+    "solucao": "Verificar configuração de sensibilidade, drivers do touchpad e gestos, testar mouse externo",
+    "severidade": "Baixo"
+  },
+  "problema_teclado_layout": {
+    "palavras_chave": [
+      "layout teclado",
+      "abnt2",
+      "ç não funciona",
+      "acentos",
+      "idioma teclado"
+    ],
+    "diagnostico": "Layout/Mapeamento de Teclado",
+    "solucao": "Configurar layout correto (ABNT2), alternar idioma, remover layouts duplicados",
+    "severidade": "Baixo"
+  },
+  "problema_relogio_hora": {
+    "palavras_chave": [
+      "data",
+      "hora",
+      "fuso horário",
+      "relógio",
+      "atrasado",
+      "adiantado",
+      "ntp"
+    ],
+    "diagnostico": "Data/Hora Incorretas",
+    "solucao": "Sincronizar com servidor NTP, ajustar fuso, checar bateria da placa-mãe (CMOS)",
+    "severidade": "Baixo"
+  },
+  "problema_proxy": {
+    "palavras_chave": [
+      "proxy",
+      "autenticação proxy",
+      "sem internet no navegador",
+      "proxy corporativo"
+    ],
+    "diagnostico": "Configuração de Proxy",
+    "solucao": "Configurar proxy no sistema e no navegador, validar credenciais, excluir exceções incorretas",
+    "severidade": "Baixo"
+  },
+  "problema_sync_nuvem": {
+    "palavras_chave": [
+      "onedrive",
+      "google drive",
+      "dropbox",
+      "sincronização",
+      "conflito",
+      "arquivo não sincroniza"
+    ],
+    "diagnostico": "Problema de Sincronização em Nuvem",
+    "solucao": "Reiniciar cliente, verificar conta/armazenamento, limpar cache e reindexar",
+    "severidade": "Baixo"
+  },
+  "problema_impressao_qualidade": {
+    "palavras_chave": [
+      "impressão clara",
+      "manchas",
+      "falhas na impressão",
+      "listras",
+      "cartucho",
+      "toner"
+    ],
+    "diagnostico": "Qualidade de Impressão Ruim",
+    "solucao": "Executar limpeza de cabeçote, alinhar cartucho, verificar nível de tinta/toner",
+    "severidade": "Baixo"
+  },
+  "problema_rede_cabo": {
+    "palavras_chave": [
+      "ethernet",
+      "cabo de rede",
+      "sem link",
+      "porta lan",
+      "conector solto"
+    ],
+    "diagnostico": "Problema na Conexão por Cabo",
+    "solucao": "Trocar cabo, testar outra porta do roteador/switch, forçar velocidade/duplex",
+    "severidade": "Baixo"
+  },
+  "problema_wifi_intermitente": {
+    "palavras_chave": [
+      "wifi cai",
+      "desconecta wifi",
+      "sinal fraco",
+      "perde conexão",
+      "oscilação wifi"
+    ],
+    "diagnostico": "Wi‑Fi Intermitente",
+    "solucao": "Aproximar do roteador, mudar canal/banda, atualizar driver do Wi‑Fi e firmware do roteador",
+    "severidade": "Baixo"
+  },
+  "problema_cpu_temperatura": {
+    "palavras_chave": [
+      "cpu quente",
+      "temperatura cpu",
+      "processador quente",
+      "100 graus",
+      "90 graus",
+      "throttling cpu",
+      "clock reduz",
+      "desempenho cai com calor",
+      "desliga jogando"
+    ],
+    "diagnostico": "Temperatura Alta da CPU",
+    "solucao": "Limpar dissipador/ventoinha, trocar pasta térmica, verificar montagem do cooler, ajustar curva de fan, considerar undervolt/modo energia equilibrado",
+    "severidade": "Alto"
+  },
+  "problema_ventoinha": {
+    "palavras_chave": [
+      "ventoinha não gira",
+      "fan parado",
+      "fan não funciona",
+      "barulho na ventoinha",
+      "ruído fan",
+      "cooler travado",
+      "rolamento fan"
+    ],
+    "diagnostico": "Ventoinha com Falha ou Travada",
+    "solucao": "Limpar poeira, verificar conector da fan, testar rotação na BIOS/monitor, substituir ventoinha se necessário",
+    "severidade": "Médio"
+  },
+  "problema_pasta_termica": {
+    "palavras_chave": [
+      "pasta térmica",
+      "thermal paste",
+      "pasta seca",
+      "trocar pasta",
+      "aplicar pasta",
+      "pasta ressecada"
+    ],
+    "diagnostico": "Pasta Térmica Degradada ou Mal Aplicada",
+    "solucao": "Remover a pasta antiga, limpar superfícies e reaplicar pasta térmica de qualidade, reinstalar o cooler com pressão adequada",
+    "severidade": "Médio"
+  },
+  "problema_poeira": {
+    "palavras_chave": [
+      "poeira",
+      "obstruído",
+      "saída de ar",
+      "grelha entupida",
+      "duto de ar",
+      "acumulo de poeira"
+    ],
+    "diagnostico": "Poeira Acumulada no Sistema de Refrigeração",
+    "solucao": "Efetuar limpeza interna com ar comprimido, desobstruir dutos e saídas de ar, checar filtros",
+    "severidade": "Baixo"
+  },
+  "problema_bateria_superaquecendo": {
+    "palavras_chave": [
+      "bateria quente",
+      "bateria inchada",
+      "inchada",
+      "esquenta carregando",
+      "cheiro estranho",
+      "superaquecimento bateria"
+    ],
+    "diagnostico": "Bateria Superaquecendo (Risco)",
+    "solucao": "Desconectar imediatamente, evitar uso, procurar assistência e substituir a bateria por componente original",
+    "severidade": "Alto"
+  },
+  "problema_throttling_termico": {
+    "palavras_chave": [
+      "thermal throttling",
+      "throttling",
+      "redução de clock",
+      "cai desempenho com calor",
+      "limita frequência",
+      "temperatura limite"
+    ],
+    "diagnostico": "Throttling Térmico",
+    "solucao": "Melhorar refrigeração (limpeza, pasta, airflow), ajustar plano de energia, considerar undervolt e monitorar temperaturas",
+    "severidade": "Médio"
   }
 }

@@ -17,7 +17,6 @@ Os dados usados no diagnóstico ficam no arquivo `base_conhecimento.json` (no me
 - **Soluções Práticas**: Sugestões de reparo para cada problema identificado
 - **Níveis de Severidade**: Problemas categorizados como Baixo, Médio ou Alto
 - **Interface Interativa**: Permite múltiplas consultas na mesma sessão
-- **Modo Demonstração**: Mostra exemplos quando executado sem entrada interativa
 - **Implementação Simples**: Código puro em Python, fácil de entender
 
 ## Como executar
@@ -73,19 +72,7 @@ Consulte um técnico especializado para reparo adequado.
 Deseja diagnosticar outro problema? (s/n):
 ```
 
-## Modo Demonstração
-
-Quando executado em ambientes não-interativos (como pipes ou scripts), o sistema mostra exemplos de funcionamento:
-
-```
-=== MODO DEMONSTRAÇÃO ===
-Como não há entrada interativa disponível, aqui estão alguns exemplos:
-
-EXEMPLO 1: [diagnóstico para problema de lentidão]
-EXEMPLO 2: [diagnóstico para problema de malware]
-EXEMPLO 3: [diagnóstico para problema de hardware]
-EXEMPLO 4: [diagnóstico para problema de rede]
-```
+<!-- Modo Demonstração removido: a aplicação agora exige uso interativo em terminal -->
 
 ## Problemas Diagnosticados
 
