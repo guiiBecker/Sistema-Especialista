@@ -199,7 +199,19 @@ def modo_demonstracao():
         "Meu computador está muito lento e demora para abrir os programas",
         "Aparecem muitos pop-ups e anúncios suspeitos na tela",
         "O computador travou e mostrou tela azul de erro",
-        "Não consigo conectar à internet mas outros dispositivos funcionam"
+        "Não consigo conectar à internet mas outros dispositivos funcionam",
+        "O disco rígido está quase cheio e os arquivos não salvam",
+        "O notebook fica muito quente e a ventoinha não para",
+        "O mouse e o teclado não estão funcionando",
+        "O Windows não inicia corretamente e reinicia sozinho",
+        "O som parou de funcionar após atualizar a placa de vídeo",
+        "A bateria do notebook descarrega muito rápido e não carrega completamente",
+        "Não consigo enviar nem receber mensagens no Outlook",
+        "O microfone não está captando minha voz",
+        "O monitor está com a tela preta, mas o computador está ligado",
+        "Não consigo acessar a impressora compartilhada na rede",
+        "O aplicativo trava e fecha sozinho toda vez que abro",
+        "Minha conexão de internet está muito lenta, downloads demorando horas"
     ]
 
     for i, exemplo in enumerate(exemplos, 1):
