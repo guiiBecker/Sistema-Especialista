@@ -11,7 +11,8 @@ Os dados usados no diagnóstico ficam no arquivo `base_conhecimento.json` (no me
 ## Recursos
 
 - **Análise Textual Inteligente**: Sistema analisa descrições em linguagem natural
-- **Base de Conhecimento Estruturada**: 8 tipos de problemas comuns de TI
+- **Correspondência Robusta**: Normalização (acentos/caso), frases inteiras com bordas de palavra e suporte simples a flexões (ex.: "conectar" → "conectando")
+- **Base de Conhecimento em JSON**: Facilmente editável em `base_conhecimento.json`
 - **Sistema de Palavras-Chave**: Identifica sintomas automaticamente no texto
 - **Pontuação de Confiança**: Cada diagnóstico inclui porcentagem de confiança
 - **Soluções Práticas**: Sugestões de reparo para cada problema identificado
@@ -26,6 +27,8 @@ Os dados usados no diagnóstico ficam no arquivo `base_conhecimento.json` (no me
 3. Execute: `python3 main.py`
 4. Descreva o problema do seu computador em linguagem natural
 5. O sistema analisará sua descrição e fornecerá diagnósticos
+
+
 
 Se você editar o `base_conhecimento.json`, as mudanças são carregadas automaticamente na próxima execução.
 
@@ -78,14 +81,20 @@ Deseja diagnosticar outro problema? (s/n):
 
 O sistema identifica os seguintes tipos de problemas:
 
-1. **Problema de Performance** - Computador lento, travamentos, demora para abrir programas
-2. **Infecção por Malware** - Pop-ups, anúncios suspeitos, comportamento estranho
-3. **Problema de Hardware** - Travamentos, tela azul, reinicializações inesperadas
-4. **Problema de Conectividade** - Internet lenta, problemas de rede, WiFi
-5. **Problema de Armazenamento** - Disco cheio, falta de espaço
-6. **Sobreaquecimento** - Computador quente, ventoinhas ruidosas
-7. **Problemas com Periféricos** - Mouse, teclado, impressora não funcionam
-8. **Problema do Sistema Operacional** - Dificuldade para iniciar, boot problems
+Alguns exemplos (não exaustivo):
+
+1. **Problema de Performance** — Lento, travando, demora para abrir
+2. **Infecção por Malware** — Pop‑ups, anúncios suspeitos
+3. **Problema de Hardware** — Travamentos, tela azul
+4. **Conectividade/Internet** — Internet/rede, DNS, VPN, Wi‑Fi intermitente, proxy
+5. **Armazenamento** — Disco cheio, partição/SO de arquivos corrompidos
+6. **Sobreaquecimento** — CPU/GPU quentes, pasta térmica, poeira, ventoinha com falha, throttling
+7. **Periféricos** — Mouse, teclado, impressora, USB
+8. **Sistema Operacional** — Inicialização/boot, atualizações do sistema
+9. **Vídeo/Áudio** — Tela preta, resolução, som/microfone
+10. **Software/Aplicativos** — Não abre apps, não responde, fecha sozinho
+11. **E‑mail/Navegador** — Envio/recebimento, cache, extensões, SSL
+12. **Sincronização e Backup** — OneDrive/Drive/Dropbox, falha de backup
 
 ## Propósito Educacional
 
