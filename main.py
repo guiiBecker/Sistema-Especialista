@@ -13,13 +13,13 @@ BASE_CONHECIMENTO = {
         "severidade": "Médio"
     },
     "problema_malware": {
-        "palavras_chave": ["vírus", "malware", "popup", "anúncio", "suspeito", "estranho"],
+        "palavras_chave": ["vírus", "malware", "popup", "anúncio", "suspeito", "estranho", "infectado"],
         "diagnostico": "Possível Infecção por Malware",
         "solucao": "Executar antivírus completo, verificar downloads recentes, limpar cache",
         "severidade": "Alto"
     },
     "problema_hardware": {
-        "palavras_chave": ["trava", "reinicia", "tela azul", "erro", "crash", "quebrado"],
+        "palavras_chave": ["trava", "reinicia", "tela azul", "erro", "crash", "quebrado", "defeito"],
         "diagnostico": "Problema de Hardware",
         "solucao": "Verificar RAM, disco rígido, temperatura, conexões físicas",
         "severidade": "Alto"
@@ -32,13 +32,13 @@ BASE_CONHECIMENTO = {
         "severidade": "Baixo"
     },
     "problema_armazenamento": {
-        "palavras_chave": ["espaço", "disco", "cheio", "armazenamento", "memória", "HD"],
+        "palavras_chave": ["espaço", "disco", "cheio", "armazenamento", "memória", "HD", "ssd"],
         "diagnostico": "Problema de Armazenamento",
         "solucao": "Liberar espaço, excluir arquivos temporários, verificar disco",
         "severidade": "Médio"
     },
     "problema_sobreaquecimento": {
-        "palavras_chave": ["quente", "ventoinha", "temperatura", "aquecer", "superaquecer"],
+        "palavras_chave": ["quente", "ventoinha", "temperatura", "aquecer", "superaquecer", "cooler"],
         "diagnostico": "Problema de Sobreaquecimento",
         "solucao": "Limpar ventoinhas, verificar ventilação, usar base elevada",
         "severidade": "Médio"
@@ -50,10 +50,58 @@ BASE_CONHECIMENTO = {
         "severidade": "Baixo"
     },
     "problema_sistema": {
-        "palavras_chave": ["iniciar", "boot", "ligar", "sistema", "windows", "instalar"],
+        "palavras_chave": ["iniciar", "boot", "ligar", "sistema", "windows", "instalar", "desligar sozinho"],
         "diagnostico": "Problema do Sistema Operacional",
         "solucao": "Executar inicialização limpa, verificar disco, restaurar sistema",
         "severidade": "Alto"
+    },
+    "problema_driver": {
+        "palavras_chave": ["driver", "instalar", "placa de vídeo", "som", "incompatível", "atualização"],
+        "diagnostico": "Problema de Drivers",
+        "solucao": "Atualizar drivers, reinstalar o dispositivo, verificar compatibilidade",
+        "severidade": "Médio"
+    },
+    "problema_bateria": {
+        "palavras_chave": ["bateria", "carregar", "energia", "descarrega rápido", "não carrega"],
+        "diagnostico": "Problema de Bateria",
+        "solucao": "Verificar carregador, substituir bateria, ajustar configurações de energia",
+        "severidade": "Médio"
+    },
+    "problema_email": {
+        "palavras_chave": ["email", "outlook", "gmail", "mensagem", "enviar", "receber", "caixa postal"],
+        "diagnostico": "Problema com E-mail",
+        "solucao": "Verificar configurações do servidor, autenticação e espaço da caixa de entrada",
+        "severidade": "Baixo"
+    },
+    "problema_audio": {
+        "palavras_chave": ["som", "áudio", "alto-falante", "fone", "microfone", "não ouço", "mudo"],
+        "diagnostico": "Problema de Áudio",
+        "solucao": "Checar drivers de som, conexões físicas, configurações de volume",
+        "severidade": "Baixo"
+    },
+    "problema_video": {
+        "palavras_chave": ["vídeo", "tela preta", "monitor", "resolução", "placa de vídeo"],
+        "diagnostico": "Problema de Vídeo",
+        "solucao": "Verificar cabos, drivers de vídeo, configurações de tela",
+        "severidade": "Médio"
+    },
+    "problema_rede_local": {
+        "palavras_chave": ["impressora de rede", "compartilhar", "acesso negado", "mapear unidade"],
+        "diagnostico": "Problema em Rede Local",
+        "solucao": "Verificar permissões, firewall, IPs e compartilhamentos",
+        "severidade": "Médio"
+    },
+    "problema_software": {
+        "palavras_chave": ["programa", "aplicativo", "erro ao abrir", "não responde", "fechar sozinho"],
+        "diagnostico": "Problema de Software",
+        "solucao": "Reinstalar o software, aplicar atualizações, verificar compatibilidade",
+        "severidade": "Médio"
+    },
+    "problema_internet_lenta": {
+        "palavras_chave": ["internet lenta", "download lento", "upload baixo", "ping alto"],
+        "diagnostico": "Conexão Lenta",
+        "solucao": "Testar velocidade, trocar canal do Wi-Fi, contatar o provedor",
+        "severidade": "Baixo"
     }
 }
 
