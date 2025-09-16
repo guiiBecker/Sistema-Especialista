@@ -165,7 +165,7 @@ def main():
         descricao = obter_descricao_usuario()
 
         if descricao is None:
-            print("Obrigado por usar o Sistema Especialista de Diagnóstico de TI!")
+            print("Encerrado")
             break
 
         # Se não houver descrição (ex.: EOF), encerra
@@ -176,7 +176,7 @@ def main():
         try:
             continuar = input("\nDeseja diagnosticar outro problema? (s/n): ").strip().lower()
             if continuar not in ['s', 'sim', 'y', 'yes']:
-                print("Obrigado por usar o Sistema Especialista de Diagnóstico de TI!")
+                print("Encerrado")
                 break
         except (KeyboardInterrupt, EOFError):
             print("\nPrograma encerrado.")
