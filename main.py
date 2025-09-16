@@ -4,6 +4,8 @@ from __future__ import annotations
 import json
 import os
 from typing import Any, Dict, List
+import re
+import unicodedata
 
 
 def _caminho_base_json() -> str:
@@ -12,14 +14,14 @@ def _caminho_base_json() -> str:
 
 
 def carregar_base_conhecimento(caminho: str | None = None) -> Dict[str, Dict[str, Any]]:
-
+    """Carrega a base de conhecimento a partir do JSON."""
     caminho = caminho or _caminho_base_json()
     try:
         with open(caminho, "r", encoding="utf-8") as f:
             data = json.load(f)
             if not isinstance(data, dict):
                 raise ValueError("JSON da base de conhecimento deve ser um objeto no topo")
-            return data  # type: ignore[return-value]
+            return data
     except FileNotFoundError:
         raise SystemExit(f"Arquivo de base de conhecimento não encontrado: {caminho}")
     except json.JSONDecodeError as e:
@@ -29,23 +31,63 @@ BASE_CONHECIMENTO = carregar_base_conhecimento()
 
 
 def analisar_descricao(descricao: str) -> List[Dict[str, Any]]:
+    """Analisa a descrição e retorna diagnósticos ordenados."""
+    def _normalizar_texto(s: str) -> str:
+        s = s.lower()
+        s = unicodedata.normalize("NFD", s)
+        s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+        s = re.sub(r"\s+", " ", s).strip()
+        return s
 
-    descricao_minuscula = descricao.lower()
+    def _tem_negacao_perto(texto_norm: str, start_idx: int, janela_chars: int = 25) -> bool:
+        ini = max(0, start_idx - janela_chars)
+        contexto = texto_norm[ini:start_idx]
+        return bool(re.search(r"\bnao\b|\bn\u00e3o\b", contexto))
+
+    descricao_minuscula = _normalizar_texto(descricao)
     resultados: List[Dict[str, Any]] = []
 
     for problema, dados in BASE_CONHECIMENTO.items():
-        pontuacao = 0
+        pontuacao = 0.0
         palavras_encontradas: List[str] = []
 
-        # Verificar cada palavra-chave
         for palavra in dados["palavras_chave"]:
-            if palavra in descricao_minuscula:
-                pontuacao += 1
+            kw_norm = _normalizar_texto(palavra)
+            matched = False
+            peso = 1.0
+
+            if " " in kw_norm:
+                padrao = r"\b" + re.escape(kw_norm) + r"\b"
+                m = re.search(padrao, descricao_minuscula)
+                if m:
+                    matched = True
+                    peso = 1.5
+                    if _tem_negacao_perto(descricao_minuscula, m.start()):
+                        peso += 0.3
+            else:
+                padrao_exato = r"\b" + re.escape(kw_norm) + r"\b"
+                m = re.search(padrao_exato, descricao_minuscula)
+                if m:
+                    matched = True
+                    if _tem_negacao_perto(descricao_minuscula, m.start()):
+                        peso += 0.3
+                else:
+                    if kw_norm.endswith(("ar", "er", "ir")) and len(kw_norm) >= 5:
+                        raiz = kw_norm[:-2]
+                        padrao_raiz = r"\b" + re.escape(raiz) + r"\w*\b"
+                        m2 = re.search(padrao_raiz, descricao_minuscula)
+                        if m2:
+                            matched = True
+                            if _tem_negacao_perto(descricao_minuscula, m2.start()):
+                                peso += 0.3
+
+            if matched:
+                pontuacao += peso
                 palavras_encontradas.append(palavra)
 
         if pontuacao > 0:
-            # Calcular confiança baseada no número de palavras encontradas
-            confianca = min(pontuacao / len(dados["palavras_chave"]), 1.0)
+            max_peso = sum(1.5 if " " in _normalizar_texto(p) else 1.0 for p in dados["palavras_chave"])
+            confianca = min(pontuacao / max_peso, 1.0)
             resultados.append({
                 "diagnostico": dados["diagnostico"],
                 "solucao": dados["solucao"],
@@ -54,13 +96,13 @@ def analisar_descricao(descricao: str) -> List[Dict[str, Any]]:
                 "palavras": palavras_encontradas
             })
 
-    # Ordenar por confiança
-    resultados.sort(key=lambda x: x["confianca"], reverse=True)
+    prioridade = {"Alto": 3, "Médio": 2, "Baixo": 1, "Medio": 2}
+    resultados.sort(key=lambda x: (x["confianca"], prioridade.get(x["severidade"], 0)), reverse=True)
 
     return resultados[:3]  # Retornar top 3
 
 def obter_descricao_usuario():
-    """Obtém a descrição do problema do usuário"""
+    """Solicita a descrição do problema ao usuário."""
     print("=== SISTEMA ESPECIALISTA DE DIAGNÓSTICO DE TI ===")
     print("Descreva o problema que você está enfrentando com seu computador.")
     print("Seja o mais detalhado possível - mencione sintomas, quando começou, etc.")
@@ -83,10 +125,10 @@ def obter_descricao_usuario():
             print("\nPrograma interrompido pelo usuário.")
             return None
         except EOFError:
-            # Sem entrada disponível (não-interativo)
             return None
 
 def mostrar_diagnosticos(resultados, descricao):
+    """Exibe os diagnósticos formatados."""
     print(f"\nAnalisando: \"{descricao}\"\n")
 
     if not resultados:
@@ -110,8 +152,7 @@ def mostrar_diagnosticos(resultados, descricao):
 
 
 def main():
-    """Função principal do programa"""
-    # Se não houver entrada interativa, encerra com mensagem curta
+    """Ponto de entrada do programa."""
     try:
         import sys
         if not sys.stdin.isatty():

@@ -198,9 +198,17 @@
     "palavras_chave": [
       "programa",
       "aplicativo",
+      "aplicativos",
+      "app",
+      "apps",
+      "abrir",
       "erro ao abrir",
+      "não abre",
+      "nao abre",
       "não responde",
-      "fechar sozinho"
+      "fechar sozinho",
+      "executar aplicativo",
+      "iniciar aplicativo"
     ],
     "diagnostico": "Problema de Software",
     "solucao": "Reinstalar o software, aplicar atualizações, verificar compatibilidade",
