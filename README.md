@@ -8,18 +8,6 @@ O sistema solicita uma descrição textual do problema do usuário, analisa o te
 
 Os dados usados no diagnóstico ficam no arquivo `base_conhecimento.json` (no mesmo diretório do `main.py`). Você pode editar esse arquivo para adicionar/alterar problemas, palavras‑chave, soluções e severidades sem precisar mexer no código.
 
-## Recursos
-
-- **Análise Textual Inteligente**: Sistema analisa descrições em linguagem natural
-- **Correspondência Robusta**: Normalização (acentos/caso), frases inteiras com bordas de palavra e suporte simples a flexões (ex.: "conectar" → "conectando")
-- **Base de Conhecimento em JSON**: Facilmente editável em `base_conhecimento.json`
-- **Sistema de Palavras-Chave**: Identifica sintomas automaticamente no texto
-- **Pontuação de Confiança**: Cada diagnóstico inclui porcentagem de confiança
-- **Soluções Práticas**: Sugestões de reparo para cada problema identificado
-- **Níveis de Severidade**: Problemas categorizados como Baixo, Médio ou Alto
-- **Interface Interativa**: Permite múltiplas consultas na mesma sessão
-- **Implementação Simples**: Código puro em Python, fácil de entender
-
 ## Como executar
 
 1. Certifique-se de ter o Python 3 instalado
@@ -81,26 +69,4 @@ Deseja diagnosticar outro problema? (s/n):
 
 O sistema identifica os seguintes tipos de problemas:
 
-Alguns exemplos (não exaustivo):
-
-1. **Problema de Performance** — Lento, travando, demora para abrir
-2. **Infecção por Malware** — Pop‑ups, anúncios suspeitos
-3. **Problema de Hardware** — Travamentos, tela azul
-4. **Conectividade/Internet** — Internet/rede, DNS, VPN, Wi‑Fi intermitente, proxy
-5. **Armazenamento** — Disco cheio, partição/SO de arquivos corrompidos
-6. **Sobreaquecimento** — CPU/GPU quentes, pasta térmica, poeira, ventoinha com falha, throttling
-7. **Periféricos** — Mouse, teclado, impressora, USB
-8. **Sistema Operacional** — Inicialização/boot, atualizações do sistema
-9. **Vídeo/Áudio** — Tela preta, resolução, som/microfone
-10. **Software/Aplicativos** — Não abre apps, não responde, fecha sozinho
-11. **E‑mail/Navegador** — Envio/recebimento, cache, extensões, SSL
-12. **Sincronização e Backup** — OneDrive/Drive/Dropbox, falha de backup
-
-## Propósito Educacional
-
-Este sistema demonstra conceitos fundamentais de IA:
-- **Sistemas especialistas baseados em regras**
-- **Processamento de linguagem natural básico** (análise de palavras-chave)
-- **Algoritmos de correspondência e pontuação**
-- **Interface conversacional simples**
-- **Lógica de diagnóstico automatizado**
+Alguns exemplos: Problema de Performance, Infecção por Malware, Problema de Hardware, Conectividade/Internet, Armazenamento, Sobreaquecimento, Periféricos, Sistema Operacional, Vídeo/Áudio, Software/Aplicativos, E‑mail/Navegador, Sincronização e Backup.
