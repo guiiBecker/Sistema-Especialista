@@ -99,7 +99,7 @@ def analisar_descricao(descricao: str) -> List[Dict[str, Any]]:
     prioridade = {"Alto": 3, "Médio": 2, "Baixo": 1, "Medio": 2}
     resultados.sort(key=lambda x: (x["confianca"], prioridade.get(x["severidade"], 0)), reverse=True)
 
-    return resultados[:3]  # Retornar top 3
+    return resultados[:3]
 
 def obter_descricao_usuario():
     """Solicita a descrição do problema ao usuário."""
@@ -169,10 +169,7 @@ def main():
             break
 
         # Se não houver descrição (ex.: EOF), encerra
-        
-
         resultados = analisar_descricao(descricao)
-
     
         mostrar_diagnosticos(resultados, descricao)
 
